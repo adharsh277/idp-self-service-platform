@@ -1,0 +1,12 @@
+{
+  "name": "idp-self-service-platform",
+  "version": "1.0.0",
+  "description": "Phase 1 Internal Developer Platform backend API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
