@@ -1,0 +1,33 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-service
+  title: Create Service
+  description: Capture service name and environment for Phase 2 UI-only self-service
+spec:
+  owner: idp-team
+  type: service
+  parameters:
+    - title: Service Details
+      required:
+        - serviceName
+        - environment
+      properties:
+        serviceName:
+          title: Service Name
+          type: string
+          description: Name of the service to create
+        environment:
+          title: Environment
+          type: string
+          description: Target environment
+          enum:
+            - dev
+            - staging
+            - prod
+  steps:
+    - id: show-inputs
+      name: Show inputs
+      action: debug:log
+      input:
+        message: 'serviceName=${{ parameters.serviceName }}, environment=${{ parameters.environment }}'
