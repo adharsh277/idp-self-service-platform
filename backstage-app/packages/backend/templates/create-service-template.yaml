@@ -1,0 +1,39 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-service
+  title: Create Service
+  description: Simple service creation form
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: Service Details
+      required:
+        - serviceName
+        - environment
+      properties:
+        serviceName:
+          title: Service Name
+          type: string
+          description: Name of the service
+        environment:
+          title: Environment
+          type: string
+          enum:
+            - dev
+            - staging
+            - prod
+
+  steps:
+    - id: log-values
+      name: Log Values
+      action: debug:log
+      input:
+        message: "Service: ${{ parameters.serviceName }}, Env: ${{ parameters.environment }}"
+
+  output:
+    text:
+      - title: Result
+        content: "Service created successfully (mock)"
