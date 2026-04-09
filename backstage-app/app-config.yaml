@@ -13,13 +13,15 @@ organization:
   name: My Company
 
 backend:
-  baseUrl: http://localhost:7007
+  baseUrl: https://redesigned-pancake-rqq59676p9jcp5vv-7007.app.github.dev
   listen:
     port: 7007
   csp:
     connect-src: ["'self'", 'http:', 'https:']
   cors:
-    origin: http://localhost:3000
+    origin:
+      - http://localhost:3000
+      - https://redesigned-pancake-rqq59676p9jcp5vv-3000.app.github.dev
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   database:
@@ -36,13 +38,8 @@ scaffolder:
     email: idp@example.com
 
 catalog:
-  import:
-    entityFilename: catalog-info.yaml
-    pullRequestBranchName: backstage-integration
-  rules:
-    - allow: [Component, System, API, Resource, Location, Template]
   locations:
     - type: file
-      target: ../../packages/app/templates/create-service-template.yaml
+      target: ./packages/backend/catalog-info.yaml
       rules:
-        - allow: [Template]
+        - allow: [Location, Template]
