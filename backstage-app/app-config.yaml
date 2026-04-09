@@ -40,6 +40,6 @@ scaffolder:
 catalog:
   locations:
     - type: file
-      target: ./packages/backend/catalog-info.yaml
+      target: /workspaces/idp-self-service-platform/backstage-app/packages/backend/catalog-info.yaml
       rules:
         - allow: [Location, Template]
