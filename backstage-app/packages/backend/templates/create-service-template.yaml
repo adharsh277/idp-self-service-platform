@@ -3,37 +3,45 @@ kind: Template
 metadata:
   name: create-service
   title: Create Service
-  description: Simple service creation form
+  description: Create a new GitHub repository from a starter template
 spec:
   owner: user:guest
   type: service
 
   parameters:
-    - title: Service Details
+    - title: Repository Details
       required:
-        - serviceName
-        - environment
+        - name
+        - owner
       properties:
-        serviceName:
-          title: Service Name
+        name:
+          title: Repository Name
           type: string
-          description: Name of the service
-        environment:
-          title: Environment
+          description: Name of the GitHub repository to create
+        owner:
+          title: GitHub Owner
           type: string
-          enum:
-            - dev
-            - staging
-            - prod
+          default: adharsh277
+          description: GitHub username or organization that will own the repository
 
   steps:
-    - id: log-values
-      name: Log Values
-      action: debug:log
+    - id: fetch-base
+      name: Fetch Base Template
+      action: fetch:template
       input:
-        message: "Service: ${{ parameters.serviceName }}, Env: ${{ parameters.environment }}"
+        url: ./template
+        values:
+          name: ${{ parameters.name }}
+
+    - id: publish
+      name: Create GitHub Repo
+      action: publish:github
+      input:
+        repoUrl: github.com?owner=${{ parameters.owner }}&repo=${{ parameters.name }}
+        defaultBranch: main
+        description: Created via Backstage
 
   output:
-    text:
-      - title: Result
-        content: "Service created successfully (mock)"
+    links:
+      - title: Open Repository
+        url: ${{ steps.publish.output.remoteUrl }}
