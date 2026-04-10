@@ -13,7 +13,7 @@ organization:
   name: My Company
 
 backend:
-  baseUrl: https://redesigned-pancake-rqq59676p9jcp5vv-7007.app.github.dev
+  baseUrl: https://turbo-enigma-6qqx65v59pj24xxw-7007.app.github.dev
   listen:
     port: 7007
   csp:
@@ -21,7 +21,7 @@ backend:
   cors:
     origin:
       - http://localhost:3000
-      - https://redesigned-pancake-rqq59676p9jcp5vv-3000.app.github.dev
+      - https://turbo-enigma-6qqx65v59pj24xxw-3000.app.github.dev
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   database:
