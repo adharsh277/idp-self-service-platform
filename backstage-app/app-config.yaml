@@ -12,6 +12,11 @@ app:
 organization:
   name: My Company
 
+integrations:
+  github:
+    - host: github.com
+      token: ${BACKSTAGE_GITHUB_TOKEN}
+
 backend:
   baseUrl: https://turbo-enigma-6qqx65v59pj24xxw-7007.app.github.dev
   listen:
