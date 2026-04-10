@@ -20,8 +20,8 @@ backend:
     connect-src: ["'self'", 'http:', 'https:']
   cors:
     origin:
-      - http://localhost:3000
       - https://turbo-enigma-6qqx65v59pj24xxw-3000.app.github.dev
+      - http://localhost:3000
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   database:
@@ -40,6 +40,10 @@ scaffolder:
 catalog:
   locations:
     - type: file
-      target: /workspaces/idp-self-service-platform/backstage-app/packages/backend/catalog-info.yaml
+      target: ../../packages/backend/catalog-info.yaml
       rules:
         - allow: [Location, Template]
+    - type: file
+      target: ../../packages/backend/templates/create-service-template.yaml
+      rules:
+        - allow: [Template]
