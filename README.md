@@ -2,7 +2,6 @@
 
 Phase 1 backend API for an Internal Developer Platform.
 
-
 ## Folder Structure
 
 ```text
